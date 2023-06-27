@@ -1,0 +1,20 @@
+.sign__input {
+    font-size: 14px;
+    line-height: 17px;
+    font-family: "Inter";
+    margin-top: 0;
+    display: block;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #CCCCCC;
+    padding: 0 0 13px 0;
+    margin-bottom: 30px;
+    /* color: none; */
+    background-color: black;
+    color: white;
+}
+
+.sign__input:focus {
+    outline: none !important;
+    color: white;
+}

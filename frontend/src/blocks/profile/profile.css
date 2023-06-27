@@ -1,0 +1,30 @@
+.profile {
+    padding: 36px 0 0 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 120px auto auto;
+    column-gap: 12px;
+    width: 100%;
+    align-items: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 860px) {
+    .profile {
+        grid-template-rows: repeat(auto-fit, 120px);
+        justify-items: center;
+        grid-template-columns: 100%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile {
+        padding: 42px 0 0 0;
+        grid-template-rows: repeat(auto-fit, 120px);
+        justify-items: center;
+        grid-template-columns: 100%;
+    }
+
+}

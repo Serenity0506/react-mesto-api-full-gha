@@ -1,0 +1,15 @@
+.profile__edit-button {
+    background-color: inherit;
+    width: 24px;
+    height: 24px;
+    border: 1px solid white;
+    background-image: url(../../../images/edit-icon-small.png);
+
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.profile__edit-button:hover {
+    opacity: 60%;
+}

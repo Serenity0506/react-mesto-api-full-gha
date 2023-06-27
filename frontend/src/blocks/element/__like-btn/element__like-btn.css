@@ -1,0 +1,15 @@
+.element__like-btn {
+    background-color: inherit;
+    border: none;
+    padding: 0;
+    background-image: url(../../../images/hurt.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 22px;
+    height: 19px;
+    cursor: pointer;
+}
+
+.element__like-btn:hover {
+    opacity: 50%;
+}
