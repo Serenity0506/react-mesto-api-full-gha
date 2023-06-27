@@ -96,7 +96,7 @@ class Api {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-56",
+  baseUrl: "https://mesto.serenity0506.nomoreparties.sbs",
   headers: {
     Authorization: "2037be67-4b4a-4e4a-852d-8f6601e15bb9",
     "Content-Type": "application/json",
