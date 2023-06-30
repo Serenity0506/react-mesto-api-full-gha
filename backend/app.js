@@ -21,8 +21,8 @@ const allowedCors = [
   'https://praktikum.tk',
   'http://praktikum.tk',
   'http://localhost:3005',
-  'http://mesto.serenity0506.nomoreparties.sbs',
-  'https://mesto.serenity0506.nomoreparties.sbs'
+  'http://mesto.serenity0506.nomoredomains.work',
+  'https://mesto.serenity0506.nomoredomains.work'
 ];
 
 app.use((req, res, next) => {
