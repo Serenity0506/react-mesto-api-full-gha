@@ -62,18 +62,26 @@ function App() {
   }, [isOpen])
 
   useEffect(() => {
+    Api.setToken(token)
+  }, [token])
+
+  useEffect(() => {
+    if(!token) return;
+
     Api.getProfile()
       .then((user) => setCurrentUser(user))
       .catch((err) => console.error(err.message))
   }, [token, setCurrentUser])
 
   useEffect(() => {
+    if(!token) return;
+
     Api.getInitialCards()
       .then((cards) => {
         setCards(cards)
       })
       .catch((err) => console.error(err.message))
-  }, [])
+  }, [token])
 
   const handleCardDelete = (card) => {
     Api.deleteCard(card._id)
@@ -93,7 +101,7 @@ function App() {
   }
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id)
+    const isLiked = card.likes.some((i) => i === currentUser._id)
 
     Api.likeCard(card._id, !isLiked)
       .then((newCard) => {

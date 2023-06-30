@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
 const { UnauthenticatedError } = require('../errors/http/UnauthenticatedError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const login = (req, res, next) => {
   const {
     email, password,
@@ -11,7 +13,11 @@ const login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       res.send({
-        token: jwt.sign({ _id: user._id }, 'super-strong-secret', { expiresIn: '7d' }),
+        token: jwt.sign(
+          { _id: user._id }, 
+          NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret', 
+          { expiresIn: '7d' }
+        ),
       });
     })
     .catch((err) => next(new UnauthenticatedError(err.message)));

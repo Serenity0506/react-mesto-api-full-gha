@@ -1,6 +1,14 @@
+import { apiSettings } from './constants'
+// import { UseCurrentUserContext } from "../context/CurrentUserContext"
+
 class Api {
   constructor(options) {
     this.options = options
+    this.token = ''
+  }
+
+  setToken(token) {
+    this.options.headers['Authorization'] = 'Bearer ' + token
   }
 
   async getInitialCards() {
@@ -96,9 +104,9 @@ class Api {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default new Api({
-  baseUrl: "https://mesto.serenity0506.nomoreparties.sbs",
+  baseUrl: apiSettings.baseUrl,
   headers: {
-    Authorization: "2037be67-4b4a-4e4a-852d-8f6601e15bb9",
+    Authorization: "",
     "Content-Type": "application/json",
   },
 })

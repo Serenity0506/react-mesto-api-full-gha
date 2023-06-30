@@ -25,9 +25,9 @@ export const newCardSettings = {
 }
 
 export const apiSettings = {
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-56",
+  baseUrl: process.env.REACT_APP_BACKEND_URL,
   headers: {
-    Authorization: "2037be67-4b4a-4e4a-852d-8f6601e15bb9",
+    // Authorization: "2037be67-4b4a-4e4a-852d-8f6601e15bb9",
     "Content-Type": "application/json",
   },
 }

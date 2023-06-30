@@ -5,7 +5,7 @@ const authRouter = require('./authRouter');
 const { NotFoundError } = require('../errors/http/NotFoundError');
 const auth = require('../middlewares/authMiddleware');
 
-app.get('/crash-test', () => {
+router.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);

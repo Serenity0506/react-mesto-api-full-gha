@@ -1,3 +1,5 @@
+import { apiSettings } from './constants'
+
 class ApiAuth {
   constructor(options) {
     this.options = options
@@ -69,5 +71,5 @@ class ApiAuth {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default new ApiAuth({
-  baseUrl: "https://auth.nomoreparties.co",
+  baseUrl: apiSettings.baseUrl,
 })
