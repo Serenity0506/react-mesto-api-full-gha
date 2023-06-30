@@ -25,6 +25,7 @@ const allowedCors = [
   'https://mesto.serenity0506.nomoredomains.work'
 ];
 
+
 app.use((req, res, next) => {
   const { origin } = req.headers;
 
