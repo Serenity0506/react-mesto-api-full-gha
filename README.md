@@ -7,8 +7,6 @@
 
 ## Ссылки на проект
 
-IP-адрес 62.84.113.159
-
+IP 62.84.113.159
 Frontend https://mesto.serenity0506.nomoredomains.work/sign-in
-
 Backend https://mesto.serenity0506.nomoreparties.sbs
