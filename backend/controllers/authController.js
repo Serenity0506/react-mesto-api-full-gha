@@ -14,9 +14,9 @@ const login = (req, res, next) => {
     .then((user) => {
       res.send({
         token: jwt.sign(
-          { _id: user._id }, 
-          NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret', 
-          { expiresIn: '7d' }
+          { _id: user._id },
+          NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret',
+          { expiresIn: '7d' },
         ),
       });
     })
