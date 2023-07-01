@@ -1,7 +1,5 @@
 const { NotFoundError } = require('../errors/http/NotFoundError');
-const { BadRequestError } = require('../errors/http/BadRequestError');
 const User = require('../models/userModel');
-const { validateUrl } = require('../utils/validators');
 
 const getUsers = (req, res, next) => {
   User.find({})
@@ -24,16 +22,10 @@ const getUserById = (req, res, next, userId) => {
 const getUserByIdRouteParam = (req, res, next) => getUserById(req, res, next, req.params.userId);
 const getUserByIdAuth = (req, res, next) => getUserById(req, res, next, req.user._id);
 
-const updateUser = (req, res, next) => {
-  const { name, about } = req.body;
-
-  if (!name || !about) {
-    throw new BadRequestError();
-  }
-
+const updateUser = (req, res, next, userData) => {
   User.findByIdAndUpdate(
     req.user._id,
-    { name, about },
+    userData,
     { new: true, runValidators: true },
   )
     .then((user) => {
@@ -46,30 +38,20 @@ const updateUser = (req, res, next) => {
     .catch(next);
 };
 
+const updateUserNameAndAbout = (req, res, next) => {
+  const { name, about } = req.body;
+  updateUser(req, res, next, { name, about });
+};
+
 const updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
-
-  if (!validateUrl(avatar)) { throw new BadRequestError('У вас ссылка битая!'); }
-
-  User.findByIdAndUpdate(
-    req.user._id,
-    { avatar },
-    { new: true, runValidators: true },
-  )
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError();
-      } else {
-        res.send(user);
-      }
-    })
-    .catch(next);
+  updateUser(req, res, next, { avatar });
 };
 
 module.exports = {
   getUsers,
   getUserByIdRouteParam,
   getUserByIdAuth,
-  updateUser,
+  updateUserNameAndAbout,
   updateAvatar,
 };

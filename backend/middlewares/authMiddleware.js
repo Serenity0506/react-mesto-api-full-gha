@@ -7,7 +7,7 @@ const checkToken = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    throw new UnauthenticatedError();
+    return next(new UnauthenticatedError());
   }
 
   const token = extractBearerToken(authorization);
@@ -16,11 +16,11 @@ const checkToken = (req, res, next) => {
   try {
     payload = jwt.verify(token, 'super-strong-secret');
   } catch (err) {
-    throw new UnauthenticatedError();
+    return next(new UnauthenticatedError());
   }
 
   req.user = payload;
-  next();
+  return next();
 };
 
 module.exports = { checkToken };

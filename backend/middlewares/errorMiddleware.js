@@ -1,3 +1,4 @@
+const { Error: MongooseError } = require('mongoose');
 const { BadRequestError } = require('../errors/http/BadRequestError');
 const { HttpError } = require('../errors/http/HttpError');
 const { InternalServerError } = require('../errors/http/InternalServerError');
@@ -7,7 +8,7 @@ const { ConflictError } = require('../errors/http/ConflictError');
 const handleExceptions = (err, req, res, next) => {
   let httpError;
 
-  if (err.name === 'ValidationError' || err.name === 'CastError') {
+  if (err instanceof MongooseError.ValidationError || err instanceof MongooseError.CastError) {
     httpError = new BadRequestError('Некорректный запрос');
   } else if (err instanceof HttpError) {
     httpError = err;

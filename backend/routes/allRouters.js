@@ -16,8 +16,8 @@ router.use(auth.checkToken);
 router.use(usersRouter);
 router.use(cardsRouter);
 
-router.use(() => {
-  throw new NotFoundError();
+router.use((req, res, next) => {
+  next(new NotFoundError());
 });
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const { Schema, ObjectId, model } = require('mongoose');
+const { validateUrl } = require('../utils/validators');
 
 const cardSchema = new Schema({
   name: {
@@ -10,6 +11,10 @@ const cardSchema = new Schema({
   link: {
     required: true,
     type: String,
+    validate: {
+      validator: validateUrl,
+      message: (props) => `${props.value} 'Некорректный адрес ссылки'`,
+    },
   },
   owner: {
     required: true,
