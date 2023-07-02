@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { UnauthenticatedError } = require('../errors/http/UnauthenticatedError');
+const { JWT_SECRET } = require('../utils/constants');
 
 const extractBearerToken = (header) => header.replace('Bearer ', '');
 
@@ -14,7 +15,7 @@ const checkToken = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, 'super-strong-secret');
+    payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     return next(new UnauthenticatedError());
   }

@@ -21,7 +21,7 @@ router.get('/users/:userId', celebrate({
 
 router.patch('/users/me/avatar', celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().custom((value, helpers) => {
+    avatar: Joi.string().required().custom((value, helpers) => {
       if (!validateUrl(value)) return helpers.message('Field should be a valid url');
 
       return value;
